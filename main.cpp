@@ -13,13 +13,13 @@ bool Title() {
 	return true;
 }
 
-std::string Intro() {//行間とか機構とかは取り合えず無視で。
+std::string Intro() {
 
 	SomeStoryTaler::Shower::ClearScreen();
 
-	std::string Name="武智";
+	std::string HN="武智";
 	SomeStoryTaler::TimeType MA(4000);
-	std::vector<std::string> Words = { "こんにちは！\n","私は案内人の天煮ヤキトリです。","これから、一つのストーリーを紡ごうと思っています。","それでですが、失礼ですが、あなたの名前をうかがってもよろしいでしょうか。","いや、ほかでは使いませんから。" };
+	std::vector<std::string> Words = { "こんにちは！\n","私は案内人の甘煮ヤキトリです。","これから、一つのストーリーを紡ごうと思っています。","それでですが、失礼ですが、あなたのハンドルネームをうかがってもよろしいでしょうか。","いや、ほかでは使いませんから。" };
 	std::vector<SomeStoryTaler::TimeType> Times = { {MA},{MA},{MA},{MA / 4},{MA} };
 
 
@@ -34,28 +34,28 @@ std::string Intro() {//行間とか機構とかは取り合えず無視で。
 	SomeStoryTaler::Shower::Timed("いや、ほかでは使いませんから。", { MA });
 	/**/
 	SomeStoryTaler::Shower::NewLine();
-	SomeStoryTaler::Shower::Simple("必要ならお名前をキーインしてください");
+	SomeStoryTaler::Shower::Simple("必要ならハンドルネームをキーインしてください");
 		
 	SomeStoryTaler::Shower::NewLine();
 
 	if (SomeStoryTaler::Waiter::TimeOuter(MA*2)!=27 ) {
 		SomeStoryTaler::Shower::Simple("あ、以下からです。いやー、不便で申し訳ないですね。");
 
-		std::cin >> Name;
+		std::cin >> HN;
 
 		SomeStoryTaler::Shower::Timed("ふむふむ・・・。", {MA});
 		SomeStoryTaler::Shower::NewLine();
-		SomeStoryTaler::Shower::Timed("あなたの名前は"+Name+"さんですね。",MA*2);
+		SomeStoryTaler::Shower::Timed("あなたのハンドルネームは"+HN+"さんですね。",MA*2);
 	}
 	else {
-		SomeStoryTaler::Shower::Timed("おっと、無粋でしたね。仮に"+Name+"さんとお呼びしましょう。", MA);
+		SomeStoryTaler::Shower::Timed("おっと、無粋でしたね。仮に"+HN+"さんとお呼びしましょう。", MA);
 	}
 	
-	SomeStoryTaler::Shower::Timed("では"+Name+"さん。",MA);
+	SomeStoryTaler::Shower::Timed("では"+HN+"さん。",MA);
 	SomeStoryTaler::Shower::NewLine();
 	SomeStoryTaler::Shower::Timed("はじめましょうか。",MA*2);
 
-	return Name;
+	return HN;
 }
 
 bool Tale001(const std::string& Name) {
@@ -112,7 +112,7 @@ bool Tale001(const std::string& Name) {
 	};
 		
 	for (std::size_t i = 0; i < Words.size(); i++) {
-		std::cout << i;
+		//std::cout << i;
 
 		if (i == 13) {
 			SomeStoryTaler::Shower::Simple(Words[i]);
@@ -156,7 +156,7 @@ bool Ending(const std::string& Name) {
 	SomeStoryTaler::Shower::ClearScreen();
 
 	SomeStoryTaler::Waiter::TimeWaiter(Time);
-	SomeStoryTaler::Shower::WithPosition::Text(80/2+1,22/2+2,"Writen by 天煮ヤキトリ＠2019");
+	SomeStoryTaler::Shower::WithPosition::Text(80/2+1,22/2+2,"Writen by　甘煮ヤキトリ＠2019");
 
 	SomeStoryTaler::Waiter::TimeOuter(Time2);
 	SomeStoryTaler::Shower::ClearScreen();
@@ -182,7 +182,7 @@ bool Koukoku() {
 }
 
 int main() {
-	InitializeDisplayMode();//need for windows. some time.
+	InitializeDisplayMode();//need on windows. some time.
 
 	Title();
 	Koukoku();
